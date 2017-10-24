@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.longj.androids23.LayoutActivity"
+    android:scrollbars="vertical" >
+
+    <TextView
+        android:layout_width="368dp"
+        android:layout_height="10dp"
+        android:gravity="center"
+        android:text="线性布局"
+        android:textColor="#ff0000"
+        android:textSize="8dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <!--
+LinearLayout(线性布局)
+
+布局层次如果和使用RelativLayout的层次一样，建议使用LinearLayout，因为LinearLayout的性能要好一些
+常用属性：
+
+orientation：布局中组件的排列方式，有horizontal(水平)、vertical(竖直,默认)两种方式
+gravity：控制组件所包含的子元素的对齐方式,可多个组合,如(left|bottom)
+layout_gravity：控制该组件在父容器里的对齐方式
+background：为给组件设置一个背景颜色或背景图片
+layout_weight(权重)：用来等比例划分区域
+
+比例：权重值/布局中的权重值之和
+(分割线)：
+
+divider：为LinerLayout设置分割线的图片
+showDividers：设置分割线的位置，有四个可选值(none，middle，begining，end)
+dividerPadding：设置分割线的padding -->
+
+    <LinearLayout
+        android:id="@+id/topLayout"
+        android:layout_width="368dp"
+        android:layout_height="80dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:background="@drawable/image1"
+        tools:layout_editor_absoluteY="10dp"
+        tools:layout_editor_absoluteX="8dp">
+
+
+        <Button
+            android:id="@+id/buton1"
+            android:layout_marginTop="10dp"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:text="按钮1"
+            style="buttonba"/>
+        <Button
+            android:id="@+id/buton2"
+            android:layout_marginTop="10dp"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:text="按钮2"/>
+        <Button
+            android:id="@+id/buton3"
+            android:layout_marginTop="10dp"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:text="按钮3"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="368dp"
+        android:layout_height="10dp"
+        android:gravity="center"
+        android:text="相对布局"
+        android:textColor="#ff0000"
+        android:textSize="8dp"
+        tools:layout_editor_absoluteY="90dp"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <!--
+RelativeLayout(相对布局)
+
+对于一些复杂的布局方式，使用相对布局是最容易实现的
+常用属性：
+
+gravity：设置容器内组件的对齐方式
+ignoreGravity：设置该属性为true的组件，将不受gravity属性的影响
+相对布局里的控件定位属性：
+根据父容器定位：
+
+layout_alignParentLeft：左对齐(true|false)
+layout_alignParentRight：右对齐(true|false)
+layout_alignParentTop：顶部对齐(true|false)
+layout_alignParentBottom：底部对齐(true|false)
+layout_centerHorizontal：水平居中(true|false)
+layout_centerVertical：垂直居中(true|false)
+layout_centerInParent：中间位置(true|false)
+根据兄弟组件定位：
+
+layout_toLeftOf：参考组件的左边( @id/..)
+layout_toRightOf：参考组件的右边(@id/..)
+layout_above：参考组件的上方(@id/..)
+layout_below：参考组件的下方(@id/..)
+layout_alignTop：对齐参考组件的上边界(@id/..)
+layout_alignBottom：对齐参考组件的下边界(@id/..)
+layout_alignLeft：对齐参考组件的左边界(@id/..)
+layout_alignRight：对齐参考组件的右边界(@id/..)
+        -->
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        tools:layout_editor_absoluteY="98dp"
+        tools:layout_editor_absoluteX="8dp">
+        <Button
+            android:id="@+id/buton4"
+            android:layout_marginTop="5dp"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:text="按钮1"
+            style="buttonba"/>
+        <Button
+            android:id="@+id/buton5"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/buton4"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:text="按钮2"/>
+
+        <Button
+            android:id="@+id/buton6"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/buton5"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:text="按钮3"/>
+
+
+    </RelativeLayout>
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>
