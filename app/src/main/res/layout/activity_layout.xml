@@ -153,6 +153,15 @@ layout_alignRight：对齐参考组件的右边界(@id/..)
 
         </RelativeLayout>
 
+        <!--
+        FrameLayout(帧布局)：
+            可以动态地为帧布局添加View或者一个布局文件。帧布局的子控件式以栈的形式进行存放的，
+            最后添加到布局中的子控件在栈的顶部，可以实现刮刮乐等的效果
+        常用属性：
+            foreground：设置该帧布局容器的前景图像
+            foregroundGravity：设置前景图像显示的位置（* 前景图像永远处于帧布局的最上面，
+            直接面对用户的图像，就是不会被覆盖的图片* ）-->
+
         <FrameLayout
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
@@ -162,12 +171,21 @@ layout_alignRight：对齐参考组件的右边界(@id/..)
             <TextView
                 android:id="@+id/TextView3"
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="帧布局做的刮刮乐"
                 android:textColor="#ff0000"
                 android:textSize="8dp"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/image4">
+
+
+            </ImageView>
 
 
         </FrameLayout>
