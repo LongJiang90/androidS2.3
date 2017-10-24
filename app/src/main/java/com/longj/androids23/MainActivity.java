@@ -3,6 +3,7 @@ package com.longj.androids23;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -33,9 +34,11 @@ public class MainActivity extends AppCompatActivity {
         View view= this.getLayoutInflater().inflate(R.layout.activity_main,null);
         setContentView(view);
 
+
+
         ListView listV = (ListView)findViewById(R.id.all_list_view);
 
-        String[] nameArr = new String[]{"图片浏览器","手势检测","各种布局","item3","item4","item5","item6","item7"};
+        String[] nameArr = new String[]{"图片浏览器","手势检测","常用布局","item3","item4","item5","item6","item7"};
         names = nameArr;
         int[] idArr = new int[]{R.id.textView};
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, this.getItem(nameArr), R.layout.list_view_item, nameArr, idArr);
@@ -55,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
                     case 1:
                         Intent intent2 = new Intent(MainActivity.this, GestureActivity.class);
                         startActivity(intent2);
+                        break;
+                    case 2:
+                        Intent intent3 = new Intent(MainActivity.this, LayoutActivity.class);
+                        startActivity(intent3);
                         break;
 
                     default:
