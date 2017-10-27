@@ -18,7 +18,10 @@
         </activity>
         <activity android:name=".PhotoBrowserActivity" />
         <activity android:name=".GestureActivity" />
-        <activity android:name=".LayoutActivity"></activity>
+        <activity android:name=".LayoutActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".GgkAndChangeLayoutActivity" />
+        <activity android:name=".HightControlsActivity"></activity>
     </application>
 
 </manifest>

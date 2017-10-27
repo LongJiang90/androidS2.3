@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="1000dp"
+    android:scrollbars="vertical"
+    android:fadingEdge="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="请选择您所在的城市:\n高级控件AutoCompleteTextView"
+                android:gravity="center"
+                android:layout_gravity="center"/>
+
+            <!--
+        completionHint-设置出现在下拉菜单中的提示标题
+        completionThreshold-设置输入几个字符才会检索
+        dropDownHeight、width-菜单高、宽
+        dropDownAnchor-下拉锚设置
+        -->
+
+            <AutoCompleteTextView
+                android:id="@+id/city_choose_textview"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:completionHint="请选择您所在的城市"
+                android:completionThreshold="1"/>
+        </LinearLayout>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="@color/lightGray"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:paddingLeft="10dp"
+            android:text=" Spinner的运用"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:entries="@array/books" />
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="@color/lightGray"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/show_time_textView"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:paddingLeft="10dp"
+            android:text=" 日期、时间选择器的使用"/>
+        <DatePicker
+            android:id="@+id/date_picker"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+        <TimePicker
+            android:id="@+id/time_picker"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="@color/lightGray"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:paddingLeft="10dp"
+            android:text="进度条的运用"/>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:max="100"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+        <ProgressBar
+            android:id="@+id/my_progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:max="100"
+            android:progressDrawable="@drawable/my_progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="@color/lightGray"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+
+    </LinearLayout>
+
+</ScrollView>

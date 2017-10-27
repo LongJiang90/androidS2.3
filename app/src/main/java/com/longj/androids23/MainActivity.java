@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listV = (ListView)findViewById(R.id.all_list_view);
 
-        String[] nameArr = new String[]{"图片浏览器","手势检测","常用布局","item3","item4","item5","item6","item7"};
+        String[] nameArr = new String[]{"图片浏览器","手势检测","常用布局","站长首页","刮刮乐","高级控件使用","动态改变布局","item1","item2","item3","item4","item5","item6","item7","item8"};
         names = nameArr;
         int[] idArr = new int[]{R.id.textView};
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, this.getItem(nameArr), R.layout.list_view_item, nameArr, idArr);
@@ -63,10 +63,21 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent3 = new Intent(MainActivity.this, LayoutActivity.class);
                         startActivity(intent3);
                         break;
+                    case 3:
+                        Intent intent4 = new Intent(MainActivity.this, HomeActivity.class);
+                        startActivity(intent4);
+                        break;
+                    case 4:
+                        Intent intent5 = new Intent(MainActivity.this, GgkAndChangeLayoutActivity.class);
+                        startActivity(intent5);
+                        break;
+                    case 5:
+                        Intent intent6 = new Intent(MainActivity.this, HightControlsActivity.class);
+                        startActivity(intent6);
+                        break;
 
                     default:
                         final AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
-                        builder.setView(view);
                         builder.show();
                         break;
                 }

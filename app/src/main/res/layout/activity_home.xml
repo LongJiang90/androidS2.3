@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="5">
+    <!-- weightSum将一个layout分为几份，使用layout_weight来确认子控件占用几份
+    1.直接在Activity代码中获取到当前父控件的宽度，并将此按钮宽度值设置成父控件宽度的一半。
+    2.通过借用LinearLayout的 weightSum 和 layout_weight 属性达到效果
+    -->
+
+
+    <LinearLayout
+        android:id="@+id/h_top_lyout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        >
+
+        <GridView
+            android:id="@+id/top_grid_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="4"
+            android:layout_marginTop="5dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/h_mid_lyout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="有边框和背景颜色"
+            android:background="@drawable/shape"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="无边框和背景颜色"/>
+
+        <Button
+            android:layout_width="190dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="按钮点击和松开变化背景"
+            android:textColor="@color/yellow"
+            android:background="@drawable/button_selector"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/h_bottom_lyout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <GridView
+            android:id="@+id/bottom_grid_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="3"
+            android:layout_marginTop="5dp" />
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

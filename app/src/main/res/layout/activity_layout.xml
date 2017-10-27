@@ -14,7 +14,7 @@
         android:gravity="center"
         android:text="线性布局"
         android:textColor="#ff0000"
-        android:textSize="8dp"/>
+        android:textSize="4pt"/>
 
     <!--
 LinearLayout(线性布局)
@@ -69,7 +69,8 @@ dividerPadding：设置分割线的padding -->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
         android:orientation="horizontal">
 
         <!--
@@ -117,7 +118,7 @@ layout_alignRight：对齐参考组件的右边界(@id/..)
                 android:gravity="center"
                 android:text="相对布局"
                 android:textColor="#ff0000"
-                android:textSize="8dp"/>
+                android:textSize="4pt"/>
 
             <Button
                 android:id="@+id/buton4"
@@ -153,6 +154,15 @@ layout_alignRight：对齐参考组件的右边界(@id/..)
 
         </RelativeLayout>
 
+        <TextView
+            android:id="@+id/TextView3"
+            android:layout_width="10dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="70dp"
+            android:gravity="center"
+            android:text="帧布局做的霓虹灯->"
+            android:textColor="#ff0000"
+            android:textSize="4pt"/>
         <!--
         FrameLayout(帧布局)：
             可以动态地为帧布局添加View或者一个布局文件。帧布局的子控件式以栈的形式进行存放的，
@@ -166,38 +176,65 @@ layout_alignRight：对齐参考组件的右边界(@id/..)
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:paddingLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:padding="20dp"
             >
+
+
             <TextView
-                android:id="@+id/TextView3"
+                android:id="@+id/textV1"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="帧布局做的刮刮乐"
-                android:textColor="#ff0000"
-                android:textSize="8dp"/>
-
-            <ImageView
+                android:background="#f00"></TextView>
+            <TextView
+                android:id="@+id/textV2"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/image4">
-
-
-            </ImageView>
+                android:background="#0f0"></TextView>
+            <TextView
+                android:id="@+id/textV3"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:background="#00f"></TextView>
+            <TextView
+                android:id="@+id/textV4"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:background="#ff0"></TextView>
+            <TextView
+                android:id="@+id/textV5"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:background="#f0f"></TextView>
+            <TextView
+                android:id="@+id/textV6"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:background="#0ff"></TextView>
 
 
         </FrameLayout>
-
-
     </LinearLayout>
 
+    <Button
+        android:id="@+id/sendCodeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="发送验证码"
 
-
-
-
-
-
+        />
+    
+    <TextView
+        android:id="@+id/bottomTextV"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="123"/>
 
 </LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="books">
+        <item>西游记</item>
+        <item>红楼梦</item>
+        <item>水浒传</item>
+        <item>三国演义</item>
+        <item>隋唐英雄传</item>
+        <item>小李飞刀</item>
+    </string-array>
+
+</resources>
