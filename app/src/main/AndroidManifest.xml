@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Android="http://schemas.android.com/apk/res-auto"
     package="com.longj.androids23">
 
     <application
@@ -22,6 +23,10 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".GgkAndChangeLayoutActivity" />
         <activity android:name=".HightControlsActivity"></activity>
+
+        <uses-permission Android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+        <uses-permission Android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <uses-permission Android:name="android.permission.RECORD_AUDIO" />
     </application>
 
 </manifest>
