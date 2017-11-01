@@ -1,11 +1,21 @@
 package com.longj.androids23;
 
 import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnMultiChoiceClickListener;
+import android.content.res.Resources;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
+import android.support.annotation.StringDef;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,12 +24,17 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
+import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.lang.reflect.Array;
 import java.util.Calendar;
+
+import static android.R.id.content;
+import static android.R.id.tabhost;
 
 public class HightControlsActivity extends AppCompatActivity {
 
@@ -28,15 +43,38 @@ public class HightControlsActivity extends AppCompatActivity {
     int mYear, mMonth, mDay, mHour, mMinute;
     int status = 0;//progressBar的进度
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hight_controls);
 
-        ScrollView scrollView = (ScrollView) findViewById(R.id.root_scrollview);
+        final ScrollView scrollView = (ScrollView) findViewById(R.id.root_scrollview);
         scrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        /*
+                        * getScorollY() 滚动条滑动的距离
+                        * getMeasuredHeight() 内容整体的高度
+                        * getHeight() 显示的高度（如果显示高度==整体高度，内容未超出屏幕）
+                        */
+                        if (scrollView.getScrollY()<=0) {
+                            //滑动到了顶部
+//                            Log.e("滑动到了->","顶部");
+                        }
+                        if (scrollView.getChildAt(0).getMeasuredHeight() <= scrollView.getScrollY()+scrollView.getHeight()) {
+                            //滑动到了顶部
+//                            Log.e("滑动到了->","底部");
+                        }
+
+                        break;
+                }
 
                 return false;
             }
@@ -100,7 +138,134 @@ public class HightControlsActivity extends AppCompatActivity {
         },5000);
 
 
+        final AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
+        SeekBar seekBar = (SeekBar) findViewById(R.id.voice_change_seekbar);
+        int maxV = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);//得到听筒模式的最大值
+        int curV = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);//得到听筒模式的当前值
+        seekBar.setMax(maxV);
+        seekBar.setProgress(curV);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int lastProgress = 0;
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (lastProgress < progress){
+                    //共有3个参数：需要调整的类型，调整的方向，附加参数（FLAG_PLAY_SOUND 调整音量时播放声音、FLAG_SHOW_UI 调整时显示音量条,就是按音量键出现的那个）
+                    audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,AudioManager.ADJUST_RAISE,AudioManager.FLAG_SHOW_UI);
+                }else {
+                    audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,AudioManager.ADJUST_LOWER,AudioManager.FLAG_SHOW_UI);
+                }
+                lastProgress = progress;
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        TabHost tabHost = (TabHost) findViewById(R.id.tab_host);
+        tabHost.setup();
+
+        tabHost.addTab(tabHost.newTabSpec("tab1")
+                .setIndicator("已接电话")
+                .setContent(R.id.tab01));
+        tabHost.addTab(tabHost.newTabSpec("tab2")
+                .setIndicator("未接电话", ResourcesCompat.getDrawable(getResources(), R.drawable.image1, null))
+                .setContent(R.id.tab02));
+
+        //提示框
+        Button defuctBtn = (Button) findViewById(R.id.btn01);
+        final Button listBtn = (Button) findViewById(R.id.btn02);
+        final Button mutChooseListBtn = (Button) findViewById(R.id.btn03);
+
+        final AlertDialog.Builder builder1 = new AlertDialog.Builder(this, 0);
+        defuctBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                builder1.setIcon(R.drawable.image2)
+                        .setTitle("默认的提示框")
+                        .setMessage("这是一个默认的提示框");
+                builder1.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder1.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                builder1.create().show();
+            }
+        });
+
+        final String[] colors = {"红色","橙色","黄色","绿色","青色","蓝色","紫色"};
+        final AlertDialog.Builder builder2 = new AlertDialog.Builder(this, 0);
+        listBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                builder2.setIcon(R.drawable.image2)
+                        .setTitle("请选择你最喜欢的一种颜色");
+                builder2.setItems(colors, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        listBtn.setText("列表对话框 选择了："+colors[which]);
+                    }
+                });
+                builder2.create().show();
+            }
+        });
+
+        final AlertDialog.Builder builder3 = new AlertDialog.Builder(this, 0);
+        final boolean[] checkStatus = {true,false,false,false,false,false,false};
+        mutChooseListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                builder3.setIcon(R.drawable.image2)
+                        .setTitle("请选择你喜欢的几种颜色");
+                builder3.setMultiChoiceItems(colors, checkStatus, new DialogInterface.OnMultiChoiceClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                    }
+                });
+
+                builder3.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String colorNames = "";
+                        for (int i=0; i<checkStatus.length; i++) {
+                            boolean isSelect = checkStatus[i];
+                            if (isSelect == true) {
+                                colorNames += (i==checkStatus.length || i==0?"":",");
+                                colorNames += colors[i];
+                            }
+                        }
+
+                        mutChooseListBtn.setText("多选列表对话框 选择了："+ colorNames);
+                    }
+                });
+                builder3.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                builder3.create().show();
+            }
+        });
 
 
 
