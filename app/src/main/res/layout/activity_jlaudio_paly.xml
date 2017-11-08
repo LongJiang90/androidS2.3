@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.longj.androids23.Record_PlayVideoACs.JLAudioPalyActivity">
+
+    <View
+        android:id="@+id/play_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+    </View>
+
+    <LinearLayout
+        android:id="@+id/btns_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@id/play_view"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <!--各种操作按钮-->
+        <Button
+            android:id="@+id/play_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <ProgressBar
+            android:layout_width="200dp"
+            android:layout_height="5dp" />
+
+        <Button
+            android:id="@+id/full_view_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+
+
+</>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_linear_layout"
+    >
+
+    <Button
+    android:id="@+id/show_view_btn"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:text="显示视图"/>
+    <Button
+        android:id="@+id/close_view_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/show_view_btn"
+        android:text="隐藏视图"/>
+
+    <Button
+        android:id="@+id/add_view_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/close_view_btn"
+        android:text="添加视图到页面"/>
+    <Button
+        android:id="@+id/delete_view_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/add_view_btn"
+        android:text="删除添加的视图"/>
+
+    <!--底部弹出来的视图-->
+    <RelativeLayout
+        android:id="@+id/info_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        android:background="@android:color/darker_gray"
+        >
+
+        <TextView
+            android:id="@+id/info_tip_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选中的地点"
+            android:textColor="@android:color/black"
+            android:textSize="20dp"/>
+        <TextView
+            android:id="@+id/info_tip_distance"
+            android:layout_below="@+id/info_tip_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="距离:5km"/>
+        <TextView
+            android:id="@+id/info_tip_address"
+            android:layout_toRightOf="@+id/info_tip_distance"
+            android:layout_below="@+id/info_tip_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="地址:重庆市南岸区xxx"/>
+
+        <Button
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="详情"/>
+
+        <LinearLayout
+            android:layout_below="@+id/info_tip_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="驾车"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="公交"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="步行"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

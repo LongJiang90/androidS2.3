@@ -200,7 +200,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:paddingLeft="10dp"
-                android:text="提示框的使用"/>
+                android:text="提示框的运用"/>
 
             <Button
                 android:id="@+id/btn01"
@@ -224,6 +224,51 @@
                 android:background="@color/lightGray"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="10dp"
+                android:text="推送的运用"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <Button
+                    android:id="@+id/send_noti_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="发送通知"/>
+                <Button
+                    android:id="@+id/cancl_noti_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="取消该通知"/>
+            </LinearLayout>
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="@color/lightGray"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="10dp"
+                android:text="PopupWindow的运用"/>
+            <Button
+                android:id="@+id/push_btn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="弹出一个自定义的视图"/>
+            <Button
+                android:id="@+id/pop_btn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="关闭"/>
 
 
 

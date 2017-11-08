@@ -1,6 +1,8 @@
 package com.longj.androids23;
 
 import android.annotation.TargetApi;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnMultiChoiceClickListener;
@@ -16,12 +18,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
@@ -29,6 +36,7 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.Calendar;
@@ -268,8 +276,92 @@ public class HightControlsActivity extends AppCompatActivity {
         });
 
 
+        //通知的使用
+        Button sendButton = (Button) findViewById(R.id.send_noti_btn);
+        Button cancleButton = (Button) findViewById(R.id.cancl_noti_btn);
+
+        final Context myContext = this;
+        final int notiID = 101;
+        final NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Notification notif = new Notification.Builder(myContext)
+                        .setSmallIcon(R.drawable.image4)
+                        .setAutoCancel(true)
+                        .setTicker("启动其他Action")
+                        .setContentText("一条新通知")
+                        .setContentText("恭喜您，您通过了英语四级考试！")
+                        .setDefaults(Notification.DEFAULT_SOUND)
+                        .setWhen(System.currentTimeMillis())
+                        //.setContentIntent()
+                        .build()
+                        ; //1.图标 2.打开后，自动消失 3.显示文本内容 4.通知内容标题 5.通知内容 6.声音 7.推送时间 8.需要启动的intent
+                //发送通知
+                nm.notify(notiID, notif);
+            }
+        });
+        cancleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nm.cancel(notiID);
+            }
+        });
+
+        final Button pushBtn = (Button) findViewById(R.id.push_btn);
+        Button popBtn = (Button) findViewById(R.id.pop_btn);
+
+        View view = this.getLayoutInflater().inflate(R.layout.activity_pupop_view,null);
+        Button closeBtn = (Button) view.findViewById(R.id.close_btn);
+
+        view.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightBlue,null));
+        final PopupWindow popup = new PopupWindow(view, 500,720);
+        pushBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup.showAtLocation(pushBtn, Gravity.CENTER, 20, 20);
+            }
+        });
+        popBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup.dismiss();
+            }
+        });
+        closeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup.dismiss();
+            }
+        });
 
 
 
+
+
+    }
+
+    //为Bar的右上角添加按钮
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        SubMenu foneMenu = menu.addSubMenu("字体大小");
+        foneMenu.setIcon(R.drawable.image1)
+        .setHeaderTitle("选择字体大小");
+        foneMenu.add(0, 0x123, 0, "10号字体");
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case 0x123:
+                Log.i("123","点击了10号字体");
+                Toast.makeText(this, "点击了10号字体", 3).show();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

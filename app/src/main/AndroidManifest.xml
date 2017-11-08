@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +24,13 @@
         <activity android:name=".LayoutActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".GgkAndChangeLayoutActivity" />
-        <activity android:name=".HightControlsActivity"></activity>
-
+        <activity android:name=".HightControlsActivity" />
+        <activity android:name=".ChangeLayoutActivity" />
+        <activity android:name=".AnimationActivity" />
+        <activity android:name=".FileManagerActivity" />
+        <activity android:name=".AudioAndVideoActivity" />
+        <activity android:name=".Record_PlayVideoACs.JLAudioPalyActivity" />
+        <activity android:name=".Record_PlayVideoACs.JLAudioRecordActivity"></activity>
     </application>
 
 </manifest>
