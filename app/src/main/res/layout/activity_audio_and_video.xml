@@ -45,6 +45,7 @@
         android:text="录制视频，点击播放"
         android:gravity="center"/>
     <Button
+        android:id="@+id/video_record_btn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="点击开始录制视频"/>

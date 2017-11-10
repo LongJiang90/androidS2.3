@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.longj.androids23.R;
 
-public class JLAudioRecordActivity extends AppCompatActivity {
+public class JLVideoPalyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jlaudio_record);
+        setContentView(R.layout.activity_jlaudio_paly);
     }
 }

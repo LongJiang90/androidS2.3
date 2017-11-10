@@ -138,6 +138,10 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent9 = new Intent(MainActivity.this, FileManagerActivity.class);
                         startActivity(intent9);
                         break;
+                    case 10:
+                        Intent intent10 = new Intent(MainActivity.this, AudioAndVideoActivity.class);
+                        startActivity(intent10);
+                        break;
 
                     default:
                         Toast.makeText(view.getContext(), "开发中...",3).show();
