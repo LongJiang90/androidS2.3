@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>JS调用Android代码</title>
+</head>
+<body>
+	<script>
+		function funFromjs(){
+        	document.getElementById("pID").innerHTML="HelloWebView,i'm from js";
+    	}
+	</script>
+
+	<input type="button" value="打招呼" onclick="myObj.showToast('Long');" />
+	<input type="button" value="学习列表" onclick="myObj.showList();" />
+	<p id="pID">这里是一个P标签</p>
+
+</body>
+</html>

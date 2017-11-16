@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        String[] nameArr = new String[]{"图片浏览器","手势检测","常用布局","站长首页","刮刮乐","高级控件使用","动态改变布局","各种动画","文件、资源操作","音视频","多线程编程","传感器运用","item1","item2","item3","item4","item5","item6","item7","item8"};
+        String[] nameArr = new String[]{"图片浏览器","手势检测","常用布局","站长首页","刮刮乐","高级控件使用","动态改变布局","各种动画","文件、资源操作","音视频","网络简单请求","多线程编程","桌面操作",
+                "传感器运用","item1","item2","item3","item4","item5","item6","item7","item8"};
         names = nameArr;
         int[] idArr = new int[]{R.id.textView};
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, this.getItem(nameArr), R.layout.list_view_item, nameArr, idArr);
@@ -141,6 +142,18 @@ public class MainActivity extends AppCompatActivity {
                     case 10:
                         Intent intent10 = new Intent(MainActivity.this, AudioAndVideoActivity.class);
                         startActivity(intent10);
+                        break;
+                    case 11:
+                        Intent intent11 = new Intent(MainActivity.this, InternetActivity.class);
+                        startActivity(intent11);
+                        break;
+                    case 12:
+                        Intent intent12 = new Intent(MainActivity.this, MultiThreadingActivity.class);
+                        startActivity(intent12);
+                        break;
+                    case 13:
+                        Intent intent13 = new Intent(MainActivity.this, MultiThreadingActivity.class);
+                        startActivity(intent13);
                         break;
 
                     default:

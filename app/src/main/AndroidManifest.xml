@@ -2,13 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:Android="http://schemas.android.com/apk/res-auto"
     package="com.longj.androids23">
-    <!--权限设置-->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <!-- 权限设置 -->
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+    <!-- 相机 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 录音 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 向SD卡写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- SD卡的创建、删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 请求网络 -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -19,6 +26,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,19 +34,49 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PhotoBrowserActivity" />
-        <activity android:name=".GestureActivity" />
-        <activity android:name=".LayoutActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".GgkAndChangeLayoutActivity" />
-        <activity android:name=".HightControlsActivity" />
-        <activity android:name=".ChangeLayoutActivity" />
-        <activity android:name=".AnimationActivity" />
-        <activity android:name=".FileManagerActivity" />
-        <activity android:name=".AudioAndVideoActivity" />
-        <activity android:name=".Record_PlayVideoACs.JLVideoPalyActivity" />
-        <activity android:name=".Record_PlayVideoACs.JLVideoRecordActivity"></activity>
-
+        <activity
+            android:name=".PhotoBrowserActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GestureActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LayoutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GgkAndChangeLayoutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HightControlsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChangeLayoutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AnimationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FileManagerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AudioAndVideoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Record_PlayVideoACs.JLVideoPalyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Record_PlayVideoACs.JLVideoRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InternetActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MultiThreadingActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".DesktopActivity"></activity>
     </application>
 
 </manifest>
