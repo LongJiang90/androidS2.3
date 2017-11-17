@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
 
 
-
         listV = (ListView)findViewById(R.id.all_list_view);
         //为listView添加headerView
         ImageView imageView = new ImageView(this);
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        String[] nameArr = new String[]{"图片浏览器","手势检测","常用布局","站长首页","刮刮乐","高级控件使用","动态改变布局","各种动画","文件、资源操作","音视频","网络简单请求","多线程编程","桌面操作",
+        String[] nameArr = new String[]{"图片浏览器","手势检测","常用布局","站长首页","刮刮乐","高级控件使用","动态改变布局","各种动画","文件、资源操作","音视频","网络简单请求","多线程编程",
                 "传感器运用","item1","item2","item3","item4","item5","item6","item7","item8"};
         names = nameArr;
         int[] idArr = new int[]{R.id.textView};
@@ -152,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent12);
                         break;
                     case 13:
-                        Intent intent13 = new Intent(MainActivity.this, MultiThreadingActivity.class);
+                        Intent intent13 = new Intent(MainActivity.this, SensorActivity.class);
                         startActivity(intent13);
                         break;
 

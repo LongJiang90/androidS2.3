@@ -94,6 +94,7 @@ public class MultiThreadingActivity extends AppCompatActivity {
             }
         });
 
+        ///WebView中的JS交互
         webView.loadUrl("file:///android_asset/test.html");
         WebSettings webSettings = webView.getSettings();
         // 编码方式

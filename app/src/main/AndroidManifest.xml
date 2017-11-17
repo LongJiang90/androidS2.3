@@ -76,7 +76,7 @@
         <activity
             android:name=".MultiThreadingActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".DesktopActivity"></activity>
+        <activity android:name=".SensorActivity"></activity>
     </application>
 
 </manifest>
