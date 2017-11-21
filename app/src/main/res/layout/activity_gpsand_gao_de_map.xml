@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.longj.androids23.GPSAndGaoDeMapActivity">
+
+    <TextView
+        android:id="@+id/use_locLotification_textV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Android自带的定位功能"
+        />
+
+
+    <TextView
+        android:id="@+id/use_gaoDeMap_textV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="高德地图API的使用"
+        />
+
+    <com.amap.api.maps.MapView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

@@ -12,6 +12,8 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.longj.androids23.MyViews.SpyView;
+
 public class SensorActivity extends AppCompatActivity implements SensorEventListener {
 
     SensorManager sensorManager;
@@ -28,6 +30,9 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
 
     ImageView zlzImgV;
     float currentDegree = 0f;
+
+    SpyView spyView;
+    int MAX_ANGLE = 30;//定义水平仪能处理的最大倾斜角，超过该角度，气泡将直接置于边界
 
 
     @Override
@@ -50,11 +55,7 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
 
         zlzImgV = (ImageView) findViewById(R.id.zlz_image_view);
 
-
-
-
-
-
+        spyView = (SpyView) findViewById(R.id.spy_view);
 
 
 
@@ -115,6 +116,8 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
                 zlzImgV.startAnimation(ra);
                 currentDegree = -degree;
 
+                spyviewDraw(values);
+
                 break;
             case Sensor.TYPE_GYROSCOPE:
                 tlyTextV.setText("陀螺仪："+"\n  绕X轴旋转的的角速度:"+values[0] + "\n  绕Y轴旋转的角速度:"+values[1] +"\n  绕Z轴旋转的角速度:"+values[2]);
@@ -148,4 +151,57 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
+
+
+
+
+    public void spyviewDraw(float[] values) {
+        float yAngle = values[1];
+        float zAngle = values[2];
+        int x = (spyView.back.getWidth() - spyView.bubble.getWidth())/2;
+        int y = (spyView.back.getHeight() - spyView.bubble.getHeight())/2;
+
+        if (Math.abs(zAngle) <= MAX_ANGLE) {
+            int deltaX = (int) ((spyView.back.getWidth() - spyView.bubble.getWidth())/2 *zAngle /MAX_ANGLE);
+            x += deltaX;
+        }else if (zAngle > MAX_ANGLE) {
+            x = 0;
+        }else {
+            x = spyView.back.getWidth() - spyView.bubble.getWidth();
+        }
+
+        if (Math.abs(yAngle) <= MAX_ANGLE) {
+            int deltaY = (int) ((spyView.back.getHeight() - spyView.bubble.getHeight())/2 *yAngle /MAX_ANGLE);
+            y += deltaY;
+        }else if (yAngle > MAX_ANGLE) {
+            y = spyView.back.getHeight() - spyView.bubble.getHeight();
+        }else {
+            y = 0;
+        }
+
+        if (isContain(x,y)) {
+            spyView.bubbleX = x;
+            spyView.bubbleY = y;
+        }
+        spyView.postInvalidate();
+    }
+
+    //计算x，y点的气泡是否处于水平仪表盘内
+    private boolean isContain(int x, int y) {
+        int bubbleCx = x + spyView.bubble.getWidth();
+        int bubbleCy = y + spyView.bubble.getHeight();
+
+        int backCx = spyView.back.getWidth() /2;
+        int backCy = spyView.back.getHeight() /2;
+
+        double distance = Math.sqrt((bubbleCx - backCx) * (bubbleCx - backCx) + (bubbleCy - backCy) * (bubbleCy - backCy));
+        if (distance < (spyView.back.getWidth() - spyView.bubble.getWidth())/2) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
 }

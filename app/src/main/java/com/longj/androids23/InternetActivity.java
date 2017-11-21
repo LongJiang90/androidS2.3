@@ -2,11 +2,12 @@ package com.longj.androids23;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -54,7 +55,11 @@ public class InternetActivity extends AppCompatActivity {
         Button downloadImageBtn = (Button) findViewById(R.id.download_image_btn);
         showImgV = (ImageView) findViewById(R.id.show_image_view);
 
-        getRequesBtn.setOnClickListener(new View.OnClickListener() {
+//        @Event(value = R.id.get_requres_btn,
+//                type = OnClickListener.class);
+
+
+        getRequesBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 new Thread(){
@@ -68,7 +73,7 @@ public class InternetActivity extends AppCompatActivity {
             }
         });
 
-        postRequesBtn.setOnClickListener(new View.OnClickListener() {
+        postRequesBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 new Thread(){
@@ -82,7 +87,7 @@ public class InternetActivity extends AppCompatActivity {
             }
         });
 
-        downloadImageBtn.setOnClickListener(new View.OnClickListener() {
+        downloadImageBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 new Thread(){
@@ -117,6 +122,10 @@ public class InternetActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private void onTestBaiDuClick(View view) {
 
     }
 

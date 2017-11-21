@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         String[] nameArr = new String[]{"图片浏览器","手势检测","常用布局","站长首页","刮刮乐","高级控件使用","动态改变布局","各种动画","文件、资源操作","音视频","网络简单请求","多线程编程",
-                "传感器运用","item1","item2","item3","item4","item5","item6","item7","item8"};
+                "传感器运用","GPS应用、高德地图","item1","item2","item3","item4","item5","item6","item7","item8"};
         names = nameArr;
         int[] idArr = new int[]{R.id.textView};
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, this.getItem(nameArr), R.layout.list_view_item, nameArr, idArr);
@@ -153,6 +153,10 @@ public class MainActivity extends AppCompatActivity {
                     case 13:
                         Intent intent13 = new Intent(MainActivity.this, SensorActivity.class);
                         startActivity(intent13);
+                        break;
+                    case 14:
+                        Intent intent14 = new Intent(MainActivity.this, GPSAndGaoDeMapActivity.class);
+                        startActivity(intent14);
                         break;
 
                     default:
