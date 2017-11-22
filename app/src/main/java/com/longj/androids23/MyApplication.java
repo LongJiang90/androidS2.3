@@ -2,6 +2,8 @@ package com.longj.androids23;
 
 import android.app.Application;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import org.xutils.x;
 
 /**
@@ -15,6 +17,9 @@ public class MyApplication extends Application {
 
         x.Ext.init(this);
 //        x.Ext.setDebug(BuildConfig.DEBUG);//是否输出debug日志，开启会影响性能
+
+        //初始化图片加载类(Fresco)
+        Fresco.initialize(this);
 
     }
 }

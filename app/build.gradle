@@ -64,6 +64,18 @@ dependencies {
         //view注解模块仅仅400多行代码却灵活的支持了各种View注入和事件绑定, 包括拥有多了方法的listener的支持.
     compile 'org.xutils:xutils:3.5.0'
 
+    //图片加载框架
+    compile 'com.facebook.fresco:fresco:1.5.0'
+    // 在 API < 14 上的机器支持 WebP 时，需要添加
+//    compile 'com.facebook.fresco:animated-base-support:0.12.0'
+//    // 支持 GIF 动图，需要添加
+//    compile 'com.facebook.fresco:animated-gif:0.12.0'
+//    // 支持 WebP （静态图+动图），需要添加
+//    compile 'com.facebook.fresco:animated-webp:0.12.0'
+//    compile 'com.facebook.fresco:webpsupport:0.12.0'
+//    // 仅支持 WebP 静态图，需要添加
+//    compile 'com.facebook.fresco:webpsupport:0.12.0'
+
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:25.3.1'

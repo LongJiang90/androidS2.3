@@ -88,8 +88,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        String[] nameArr = new String[]{"图片浏览器","手势检测","常用布局","站长首页","刮刮乐","高级控件使用","动态改变布局","各种动画","文件、资源操作","音视频","网络简单请求","多线程编程",
-                "传感器运用","GPS应用、高德地图","item1","item2","item3","item4","item5","item6","item7","item8"};
+        String[] nameArr = new String[]{"图片浏览器","手势检测","常用布局","站长首页","刮刮乐"
+                , "高级控件使用", "动态改变布局","各种动画","文件、资源操作","音视频","网络简单请求"
+                , "多线程编程", "传感器运用","GPS应用、高德地图","Fresco图片加载库使用"
+                , "item1","item2","item3","item4","item5","item6","item7","item8"};
+
         names = nameArr;
         int[] idArr = new int[]{R.id.textView};
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, this.getItem(nameArr), R.layout.list_view_item, nameArr, idArr);
@@ -160,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     default:
-                        Toast.makeText(view.getContext(), "开发中...",3).show();
+                        Toast.makeText(view.getContext(), "开发中...",3 ).show();
 
 
                         break;
@@ -225,22 +228,69 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder;
-            if (convertView==null) {
-                holder=new ViewHolder();
-                convertView=inflater.inflate(R.layout.list_view_item,null);
-                holder.tv= (TextView) convertView.findViewById(R.id.textView);
-                convertView.setTag(holder);
-            }else {
-                holder= (ViewHolder) convertView.getTag();
+
+            int type = getItemViewType(position);
+
+            FzItemHolder fzItemHolder;
+            ViewHolder viewHolder;
+            switch (type) {
+                case 0:
+                    if (convertView==null ) {
+                        fzItemHolder=new FzItemHolder();
+
+                        convertView=inflater.inflate(R.layout.list_view_fz_item,null);
+                        fzItemHolder.imageView= (ImageView) convertView.findViewById(R.id.home_item_imageView);
+                        fzItemHolder.titleTV= (TextView) convertView.findViewById(R.id.home_item_titleTextV);
+                        fzItemHolder.detialTV= (TextView) convertView.findViewById(R.id.home_item_detialTextV);
+                        fzItemHolder.fbTimeTV= (TextView) convertView.findViewById(R.id.home_item_fbTimeTextV);
+                        convertView.setTag(R.id.tag_second, fzItemHolder);
+                    }else {
+                        fzItemHolder= (FzItemHolder) convertView.getTag(R.id.tag_second);
+                    }
+
+                    fzItemHolder.imageView.setImageDrawable(getDrawable(R.drawable.zhinanzhen));
+                    fzItemHolder.titleTV.setText("标题"+position);
+//                holder.detialTV
+                    fzItemHolder.fbTimeTV.setText("发布时间：2017-11-22 "+(position+1));
+                    break;
+                case 1:
+                    if (convertView==null) {
+                        viewHolder=new ViewHolder();
+                        convertView=inflater.inflate(R.layout.list_view_item,null);
+                        viewHolder.tv= (TextView) convertView.findViewById(R.id.textView);
+                        convertView.setTag(R.id.tag_frist, viewHolder);
+                    }else {
+                        viewHolder= (ViewHolder) convertView.getTag(R.id.tag_frist);
+                    }
+                    viewHolder.tv.setText(strs[position]);
+                    break;
             }
-            holder.tv.setText(strs[position]);
             return convertView;
+        }
+
+
+        //实现下面2个协议方法，会告诉协议我有几种不同的item，且每种item的type标识，且在不同的type下会读取不同的缓存池
+        @Override
+        public int getViewTypeCount() {
+            return 2;
+        }
+        @Override
+        public int getItemViewType(int position) {
+            return position>16?0:1;
         }
 
         //缓存池 不同样式的listViewItem需要不同Holder来缓存 每一种不同的cell需要不同的holder来缓存
         class ViewHolder{
             private TextView tv;
+        }
+
+        class FzItemHolder {
+
+            private ImageView imageView;
+            private TextView titleTV;
+            private TextView detialTV;
+            private TextView fbTimeTV;
+
         }
     }
 

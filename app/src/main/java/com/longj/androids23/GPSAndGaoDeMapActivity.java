@@ -19,7 +19,14 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdate;
+import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.BitmapDescriptorFactory;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.MarkerOptions;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -33,6 +40,8 @@ public class GPSAndGaoDeMapActivity extends AppCompatActivity {
     TextView gdMapTextV;
 
     //高德地图相关属性
+    MapView mapV;
+    AMap aMap;
     AMapLocationClient mLocationClient = null;
     AMapLocationListener locationListener;
     AMapLocationClientOption mLocationOption = null;
@@ -133,6 +142,7 @@ public class GPSAndGaoDeMapActivity extends AppCompatActivity {
 
                 if (aMapLocation != null) {
                     if (aMapLocation.getErrorCode() == 0) {
+                        addPointInMapView(aMapLocation.getLatitude(),aMapLocation.getLongitude());
                         gdMapTextV.setText("高德地图的定位SDK定位信息："+"\n  经度:"+aMapLocation.getLongitude() + "\n  纬度:"+aMapLocation.getLatitude() +"\n  高度:"+aMapLocation.getAltitude()
                                 +"\n  速度:"+aMapLocation.getSpeed() +"\n  方向:"+aMapLocation.getBearing() +"\n  定位时间:"+df.format(date) );
                     }else {
@@ -149,15 +159,22 @@ public class GPSAndGaoDeMapActivity extends AppCompatActivity {
 
         mLocationOption = new AMapLocationClientOption();
         mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//高精度
-        mLocationOption.setInterval(10000);//设置定位间隔,单位毫秒,默认为2000ms，最低1000ms。
+        mLocationOption.setInterval(60000);//设置定位间隔,单位毫秒,默认为2000ms，最低1000ms。
         mLocationOption.setNeedAddress(true);//设置是否返回地址信息（默认返回地址信息）
         mLocationOption.setHttpTimeOut(30000);//设置请求超时时间，默认30s，最好不低于8s
         mLocationClient.setLocationOption(mLocationOption);
         mLocationClient.startLocation();// 启动定位
 
-        MapView mapV = (MapView) findViewById(R.id.mapView);
+        mapV = (MapView) findViewById(R.id.mapView);
         mapV.onCreate(savedInstanceState);
 
+        if (aMap == null) {
+            aMap = mapV.getMap();
+            CameraUpdate cu = CameraUpdateFactory.zoomTo(15);
+            aMap.moveCamera(cu);
+            CameraUpdate tiltUpdate = CameraUpdateFactory.changeTilt(30);
+            aMap.moveCamera(tiltUpdate);
+        }
 
     }
 
@@ -176,6 +193,25 @@ public class GPSAndGaoDeMapActivity extends AppCompatActivity {
             locTextV.setText("定位失败:定位信息为空  "+stateStr);
         }
     }
+
+    public void addPointInMapView(double lat, double lng) {
+        aMap.clear();
+
+        LatLng pos = new LatLng(lat, lng);
+        CameraUpdate cu = CameraUpdateFactory.changeLatLng(pos);
+        aMap.moveCamera(cu);
+        //创建大头针
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(pos);
+        markerOptions.title("我的位置");
+        markerOptions.snippet("学习高德地图定位");
+        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+        markerOptions.draggable(true);
+        Marker marker = aMap.addMarker(markerOptions);
+        marker.showInfoWindow();
+    }
+
+
 
     public static String sHA1(Context context) {
         try {
