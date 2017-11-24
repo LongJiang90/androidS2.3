@@ -161,6 +161,10 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent14 = new Intent(MainActivity.this, GPSAndGaoDeMapActivity.class);
                         startActivity(intent14);
                         break;
+                    case 15:
+                        Intent intent15 = new Intent(MainActivity.this, ImageLoadActivity.class);
+                        startActivity(intent15);
+                        break;
 
                     default:
                         Toast.makeText(view.getContext(), "开发中...",3 ).show();
@@ -276,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
         }
         @Override
         public int getItemViewType(int position) {
-            return position>16?0:1;
+            return position>18?0:1;
         }
 
         //缓存池 不同样式的listViewItem需要不同Holder来缓存 每一种不同的cell需要不同的holder来缓存

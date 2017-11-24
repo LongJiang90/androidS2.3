@@ -17,7 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    signingConfigs{
+    signingConfigs {
         release {
             keyAlias 'android'
             keyPassword '123456'
@@ -33,11 +33,44 @@ android {
     }
 }
 
+//这货里面不能有注释，不然会在添加Activity的时候自动变乱
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    compile 'com.amap.api:location:latest.integration'
+    compile 'com.amap.api:3dmap:latest.integration'
+    compile 'org.xutils:xutils:3.5.0'
+    compile 'com.facebook.fresco:fresco:1.5.0'
+    compile 'com.facebook.fresco:animated-gif:1.5.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:support-v4:25.3.1'
+    testCompile 'junit:junit:4.12'
+}
+
+//高德地图定位SDK
+
+//高德地图3D地图SDK
+
+//xUtils 包含了orm, http(s), image, view注解, 但依然很轻量级(246K), 并且特性强大, 方便扩展:
+//稳定的基石: AbsTask和统一的回调接口Callback, 任何异常, 即使你的回调方法实现有异常都会进入onError, 任何情况下onFinished总会让你知道任务结束了.
+//基于高效稳定的orm工具, http模块得以更方便的实现cookie(支持domain, path, expiry等特性)和 缓存(支持Cache-Control, Last-Modified, ETag等特性)的支持.
+//有了强大的http及其下载缓存的支持, image模块的实现相当的简洁, 并且支持回收被view持有, 但被Mem Cache移除的图片, 减少页面回退时的闪烁..
+//view注解模块仅仅400多行代码却灵活的支持了各种View注入和事件绑定, 包括拥有多了方法的listener的支持.
+
+//图片加载框架
+// 在 API < 14 上的机器支持 WebP 时，需要添加
+//    compile 'com.facebook.fresco:animated-base-support:0.12.0'
+//    // 支持 GIF 动图，需要添加
+//    compile 'com.facebook.fresco:animated-gif:0.12.0'
+//    // 支持 WebP （静态图+动图），需要添加
+//    compile 'com.facebook.fresco:animated-webp:0.12.0'
+//    compile 'com.facebook.fresco:webpsupport:0.12.0'
+//    // 仅支持 WebP 静态图，需要添加
+//    compile 'com.facebook.fresco:webpsupport:0.12.0'
 
 //    //引用ijkplayer
 //    //# required, enough for most devices.
@@ -51,33 +84,3 @@ dependencies {
 //
 //    //# ExoPlayer as IMediaPlayer: optional, experimental
 //    compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.4.5.1'
-
-    //高德地图定位SDK
-    compile 'com.amap.api:location:latest.integration'
-    //高德地图3D地图SDK
-    compile 'com.amap.api:3dmap:latest.integration'
-
-    //xUtils 包含了orm, http(s), image, view注解, 但依然很轻量级(246K), 并且特性强大, 方便扩展:
-        //稳定的基石: AbsTask和统一的回调接口Callback, 任何异常, 即使你的回调方法实现有异常都会进入onError, 任何情况下onFinished总会让你知道任务结束了.
-        //基于高效稳定的orm工具, http模块得以更方便的实现cookie(支持domain, path, expiry等特性)和 缓存(支持Cache-Control, Last-Modified, ETag等特性)的支持.
-        //有了强大的http及其下载缓存的支持, image模块的实现相当的简洁, 并且支持回收被view持有, 但被Mem Cache移除的图片, 减少页面回退时的闪烁..
-        //view注解模块仅仅400多行代码却灵活的支持了各种View注入和事件绑定, 包括拥有多了方法的listener的支持.
-    compile 'org.xutils:xutils:3.5.0'
-
-    //图片加载框架
-    compile 'com.facebook.fresco:fresco:1.5.0'
-    // 在 API < 14 上的机器支持 WebP 时，需要添加
-//    compile 'com.facebook.fresco:animated-base-support:0.12.0'
-//    // 支持 GIF 动图，需要添加
-//    compile 'com.facebook.fresco:animated-gif:0.12.0'
-//    // 支持 WebP （静态图+动图），需要添加
-//    compile 'com.facebook.fresco:animated-webp:0.12.0'
-//    compile 'com.facebook.fresco:webpsupport:0.12.0'
-//    // 仅支持 WebP 静态图，需要添加
-//    compile 'com.facebook.fresco:webpsupport:0.12.0'
-
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:support-v4:25.3.1'
-    testCompile 'junit:junit:4.12'
-}
