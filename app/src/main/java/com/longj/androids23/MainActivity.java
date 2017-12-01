@@ -6,14 +6,11 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -23,8 +20,15 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.longj.androids23.Util.JLAdapter;
+import com.longj.androids23.Util.JLViewHolder;
+import com.longj.androids23.Util.OkHttpUtil;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 //        第一种，在Activity所在类中
@@ -91,13 +95,41 @@ public class MainActivity extends AppCompatActivity {
         String[] nameArr = new String[]{"图片浏览器","手势检测","常用布局","站长首页","刮刮乐"
                 , "高级控件使用", "动态改变布局","各种动画","文件、资源操作","音视频","网络简单请求"
                 , "多线程编程", "传感器运用","GPS应用、高德地图","Fresco图片加载库使用"
+                , "Gson-JSON解析库"
                 , "item1","item2","item3","item4","item5","item6","item7","item8"};
-
         names = nameArr;
         int[] idArr = new int[]{R.id.textView};
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, this.getItem(nameArr), R.layout.list_view_item, nameArr, idArr);
 
-        listV.setAdapter(new ListViewAdapter(this,nameArr));
+//        listV.setAdapter(new ListViewAdapter(this,nameArr));
+
+        int[] layoutIDs = {R.layout.list_view_fz_item,R.layout.list_view_item};
+        List<String> nameList = Arrays.asList(nameArr);
+        listV.setAdapter(new JLAdapter<String>(MainActivity.this, nameList, layoutIDs) {
+            @Override
+            protected void convertView(View itemV, String obj, int position, int type) {
+                if (type == 0) {
+                    ImageView imageView=  JLViewHolder.get(itemV, R.id.home_item_imageView);
+                    TextView titleTV= JLViewHolder.get(itemV, R.id.home_item_titleTextV);
+                    TextView detialTV= JLViewHolder.get(itemV, R.id.home_item_detialTextV);
+                    TextView fbTimeTV= JLViewHolder.get(itemV, R.id.home_item_fbTimeTextV);
+
+                    imageView.setImageDrawable(getDrawable(R.drawable.zhinanzhen));
+                    titleTV.setText("标题"+position);
+                    fbTimeTV.setText("发布时间：2017-11-22 "+(position+1));
+                }
+                if (type == 1) {
+                    TextView tv = JLViewHolder.get(itemV, R.id.textView);//使用通用ViewHolder
+                    tv.setText(obj);
+                }
+            }
+
+            @Override
+            protected int type(int position) {
+                return position>18?0:1;
+            }
+        });
+
 
         //处理item的点击事件 需要跳转传值：intent.putExtra("extra_data", data);//相当于键值对 //
         //在被传的vc里面接收Intent intent = getIntent();String data = intent.getStringExtra("extra_data");
@@ -165,10 +197,19 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent15 = new Intent(MainActivity.this, ImageLoadActivity.class);
                         startActivity(intent15);
                         break;
+                    case 16:
+                        Intent intent16 = new Intent(MainActivity.this, UseGsonActivity.class);
+                        startActivity(intent16);
+                        break;
 
                     default:
-                        Toast.makeText(view.getContext(), "开发中...",3 ).show();
+                        Toast.makeText(view.getContext(), "开发中...",Toast.LENGTH_SHORT ).show();
 
+                        try {
+                            OkHttpUtil.ok_SynGetSend("http://www.weather.com.cn/data/sk/101010100.html");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
 
                         break;
                 }

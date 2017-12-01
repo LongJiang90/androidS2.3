@@ -40,6 +40,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
+    compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.amap.api:location:latest.integration'
     compile 'com.amap.api:3dmap:latest.integration'
     compile 'org.xutils:xutils:3.5.0'
@@ -50,6 +52,10 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     testCompile 'junit:junit:4.12'
 }
+
+//网络请求库
+
+//JSON解析 Jackson在处理json大文件时解析性能明显优于Gson，如果应用经常需要传输较大的json文件则使用Jackson,小文件则使用Gson。还有阿里的fastjson也有其优势
 
 //高德地图定位SDK
 

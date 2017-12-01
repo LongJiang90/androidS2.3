@@ -105,7 +105,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".SensorActivity" />
         <activity android:name=".GPSAndGaoDeMapActivity" />
-        <activity android:name=".ImageLoadActivity"></activity>
+        <activity android:name=".ImageLoadActivity" />
+        <activity android:name=".UseGsonActivity"></activity>
     </application>
 
 </manifest>
