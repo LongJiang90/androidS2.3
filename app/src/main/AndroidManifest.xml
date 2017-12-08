@@ -106,7 +106,10 @@
         <activity android:name=".SensorActivity" />
         <activity android:name=".GPSAndGaoDeMapActivity" />
         <activity android:name=".ImageLoadActivity" />
-        <activity android:name=".UseGsonActivity"></activity>
+        <activity android:name=".UseGsonActivity" />
+        <activity android:name=".TransactionActivity" />
+        <activity android:name=".ActivityTransaction.ManyBtnsActivity" />
+        <activity android:name=".BluetoothActivity"></activity>
     </application>
 
 </manifest>

@@ -18,6 +18,9 @@ import com.google.gson.reflect.TypeToken;
 import com.longj.androids23.Util.JLAdapter;
 import com.longj.androids23.Util.JLViewHolder;
 import com.longj.androids23.Util.OkHttpUtil;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,6 +42,7 @@ public class UseGsonActivity extends AppCompatActivity {
     private List<Notice> notis = new ArrayList<Notice>();
     int curentPage = 1;
     boolean isClearAllObject = false;
+    RefreshLayout refreshLayout = null;
 
 
     public Handler uiHandler = new Handler(new Handler.Callback() {
@@ -48,6 +52,7 @@ public class UseGsonActivity extends AppCompatActivity {
             switch (msg.what) {
                 case 0x110:
 //                    listView.setAdapter(new NoticeListViewAdt(UseGsonActivity.this, notis));
+
 
                     listView.setAdapter(new JLAdapter<Notice>(UseGsonActivity.this, notis, R.layout.list_view_item) {
                         @Override
@@ -62,6 +67,15 @@ public class UseGsonActivity extends AppCompatActivity {
                             tv.setText(obj.Title +" - "+ obj.CreateTime);
                         }
                     });
+
+                    if (isClearAllObject == true){
+                        refreshLayout.finishRefresh();
+                    }else {
+                        refreshLayout.finishLoadmore();
+                        listView.setSelection(notis.size() / 2);
+                    }
+
+
                     break;
             }
             return false;
@@ -93,6 +107,32 @@ public class UseGsonActivity extends AppCompatActivity {
                 curentPage ++;
             }
         });
+
+        refreshLayout = (RefreshLayout)findViewById(R.id.refreshLayout);
+        //设置 Header和Footer的样式
+//        refreshLayout.setRefreshHeader(new MaterialHeader(this).setShowBezierWave(true));//Material样式
+//
+//        refreshLayout.setRefreshFooter(new BallPulseFooter(this).setSpinnerStyle(SpinnerStyle.Translate));//球脉冲
+
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                curentPage = 1;
+                isClearAllObject = true;
+                getNoticeList();
+            }
+        });
+        refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadmore(2000);
+
+                curentPage ++;
+                isClearAllObject = false;
+                getNoticeList();
+            }
+        });
+        refreshLayout.autoRefresh();
 
     }
 
@@ -207,19 +247,15 @@ public class UseGsonActivity extends AppCompatActivity {
         }
     }
 
-
-}
-
-
-class Notice {
-    public String ID;
-    public String Title;
-    public String CreateTime;
+    class Notice {
+        public String ID;
+        public String Title;
+        public String CreateTime;
 //    public OtherClass otsa;
 
-    public Notice() {
-        //无参构造函数
-    }
+        public Notice() {
+            //无参构造函数
+        }
 
 //    public class OtherClass {
 //        public String AddName;
@@ -227,15 +263,20 @@ class Notice {
 //    }
 
 
-    public void setID(String ID) {
-        this.ID = ID;
+        public void setID(String ID) {
+            this.ID = ID;
+        }
+
+        public void setTitle(String title) {
+            Title = title;
+        }
+
+        public void setCreateTime(String createTime) {
+            CreateTime = createTime;
+        }
     }
 
-    public void setTitle(String title) {
-        Title = title;
-    }
-
-    public void setCreateTime(String createTime) {
-        CreateTime = createTime;
-    }
 }
+
+
+

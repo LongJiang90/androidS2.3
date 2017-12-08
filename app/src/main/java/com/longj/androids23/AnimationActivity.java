@@ -35,6 +35,7 @@ public class AnimationActivity extends AppCompatActivity implements View.OnClick
 
     RelativeLayout mainLinearLayout;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +51,7 @@ public class AnimationActivity extends AppCompatActivity implements View.OnClick
         RelativeLayout.LayoutParams lp2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp2.addRule(RelativeLayout.BELOW, R.id.text1);//让视图添加到 textview1下面
         mainLinearLayout.addView(view, lp2);
-
-
+        
         getAnimationBtn();
     }
 

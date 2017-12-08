@@ -22,9 +22,7 @@ import android.widget.Toast;
 
 import com.longj.androids23.Util.JLAdapter;
 import com.longj.androids23.Util.JLViewHolder;
-import com.longj.androids23.Util.OkHttpUtil;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -95,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         String[] nameArr = new String[]{"图片浏览器","手势检测","常用布局","站长首页","刮刮乐"
                 , "高级控件使用", "动态改变布局","各种动画","文件、资源操作","音视频","网络简单请求"
                 , "多线程编程", "传感器运用","GPS应用、高德地图","Fresco图片加载库使用"
-                , "Gson-JSON解析库"
+                , "Gson-JSON解析库","Transitions 转场动画","蓝牙开发"
                 , "item1","item2","item3","item4","item5","item6","item7","item8"};
         names = nameArr;
         int[] idArr = new int[]{R.id.textView};
@@ -201,15 +199,23 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent16 = new Intent(MainActivity.this, UseGsonActivity.class);
                         startActivity(intent16);
                         break;
+                    case 17:
+                        Intent intent17 = new Intent(MainActivity.this, TransactionActivity.class);
+                        startActivity(intent17);
+                        break;
+                    case 18:
+                        Intent intent18 = new Intent(MainActivity.this, BluetoothActivity.class);
+                        startActivity(intent18);
+                        break;
 
                     default:
                         Toast.makeText(view.getContext(), "开发中...",Toast.LENGTH_SHORT ).show();
 
-                        try {
-                            OkHttpUtil.ok_SynGetSend("http://www.weather.com.cn/data/sk/101010100.html");
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+//                        try {
+//                            OkHttpUtil.ok_SynGetSend("http://www.weather.com.cn/data/sk/101010100.html");
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
 
                         break;
                 }

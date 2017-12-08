@@ -40,6 +40,10 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+
+    compile 'com.andkulikov:transitionseverywhere:1.7.8'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
     compile 'com.squareup.okhttp3:okhttp:3.9.1'
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.amap.api:location:latest.integration'
@@ -52,6 +56,9 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     testCompile 'junit:junit:4.12'
 }
+//转场动画
+
+//下拉刷新上拉加载库 下面那句没有使用特殊Header，可以不加
 
 //网络请求库
 

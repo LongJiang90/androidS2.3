@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.longj.androids23.UseGsonActivity">
 
@@ -12,11 +13,27 @@
         android:layout_height="wrap_content"
         android:text="获取首页公告列表"/>
 
-    <ListView
-        android:id="@+id/gg_list_view"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:dividerHeight="5dp" />
+        android:layout_height="match_parent">
+        <com.scwang.smartrefresh.header.StoreHouseHeader
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:shhText="Yun Wang OA"
+            app:shhLineWidth="3dp"/>
+        <ListView
+            android:id="@+id/gg_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="5dp"
+            android:overScrollMode="never"
+            android:background="#fff" />
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+
 
 
 </LinearLayout>
