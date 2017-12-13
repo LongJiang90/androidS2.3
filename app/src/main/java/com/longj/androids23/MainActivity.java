@@ -20,8 +20,8 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.longj.androids23.Util.JLAdapter;
-import com.longj.androids23.Util.JLViewHolder;
+import com.longj.androids23.Util.JLAdapter_ViewHolder.JLAdapter;
+import com.longj.androids23.Util.JLAdapter_ViewHolder.JLViewHolder;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -15,8 +15,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.longj.androids23.Util.JLAdapter;
-import com.longj.androids23.Util.JLViewHolder;
+import com.longj.androids23.Util.JLAdapter_ViewHolder.JLAdapter;
+import com.longj.androids23.Util.JLAdapter_ViewHolder.JLViewHolder;
 import com.longj.androids23.Util.OkHttpUtil;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;

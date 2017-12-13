@@ -1,4 +1,4 @@
-package com.longj.androids23.Util;
+package com.longj.androids23.Util.JLAdapter_ViewHolder;
 
 import android.content.Context;
 import android.view.LayoutInflater;

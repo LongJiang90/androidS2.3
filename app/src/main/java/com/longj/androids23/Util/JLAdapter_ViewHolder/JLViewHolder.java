@@ -1,4 +1,4 @@
-package com.longj.androids23.Util;
+package com.longj.androids23.Util.JLAdapter_ViewHolder;
 
 import android.util.SparseArray;
 import android.view.View;
@@ -32,8 +32,4 @@ public class JLViewHolder {
 
         return (T)childV;
     }
-
-
-
-
 }

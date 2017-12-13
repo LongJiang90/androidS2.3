@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.longj.androids23.BluetoothActivity">
+    tools:context="com.longj.androids23.BluetoothActivity"
+    android:orientation="vertical"
+    >
+    <Button
+        android:id="@+id/search_devices_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="搜索蓝牙设备"/>
 
-</android.support.constraint.ConstraintLayout>
+    <ListView
+        android:id="@+id/ble_devices_listV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
